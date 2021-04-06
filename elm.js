@@ -5319,6 +5319,7 @@ var elm$html$Html$Attributes$stringProperty = F2(
 			key,
 			elm$json$Json$Encode$string(string));
 	});
+var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
 var elm$html$Html$Attributes$value = elm$html$Html$Attributes$stringProperty('value');
 var elm$html$Html$Events$alwaysStop = function (x) {
 	return _Utils_Tuple2(x, true);
@@ -5370,7 +5371,10 @@ var author$project$Main$editGameView = F2(
 				[
 					A2(
 					elm$html$Html$td,
-					_List_Nil,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$class('p-2')
+						]),
 					_List_fromArray(
 						[
 							elm$html$Html$text(
@@ -5378,13 +5382,17 @@ var author$project$Main$editGameView = F2(
 						])),
 					A2(
 					elm$html$Html$td,
-					_List_Nil,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$class('p-2')
+						]),
 					_List_fromArray(
 						[
 							A2(
 							elm$html$Html$input,
 							_List_fromArray(
 								[
+									elm$html$Html$Attributes$class('filter drop-shadow-lg border border-gray-400 text-center rounded w-12 p-1'),
 									elm$html$Html$Events$onInput(
 									author$project$Main$UpdateScore1(game.gameId)),
 									elm$html$Html$Attributes$value(game.score1)
@@ -5393,7 +5401,10 @@ var author$project$Main$editGameView = F2(
 						])),
 					A2(
 					elm$html$Html$td,
-					_List_Nil,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$class('p-2')
+						]),
 					_List_fromArray(
 						[
 							elm$html$Html$text(
@@ -5408,6 +5419,7 @@ var author$project$Main$editGameView = F2(
 							elm$html$Html$input,
 							_List_fromArray(
 								[
+									elm$html$Html$Attributes$class('filter drop-shadow-lg border border-gray-400 rounded text-center w-12 p-1'),
 									elm$html$Html$Events$onInput(
 									author$project$Main$UpdateScore2(game.gameId)),
 									elm$html$Html$Attributes$value(game.score2)
@@ -5420,7 +5432,10 @@ var elm$html$Html$table = _VirtualDom_node('table');
 var author$project$Main$gamesView = function (model) {
 	return A2(
 		elm$html$Html$table,
-		_List_Nil,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('mx-auto')
+			]),
 		A2(
 			elm$core$List$map,
 			author$project$Main$editGameView(model.players),
@@ -5512,7 +5527,10 @@ var author$project$Main$playerView = F2(
 				[
 					A2(
 					elm$html$Html$td,
-					_List_Nil,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$class('p-2')
+						]),
 					_List_fromArray(
 						[
 							elm$html$Html$text(
@@ -5521,13 +5539,17 @@ var author$project$Main$playerView = F2(
 						])),
 					A2(
 					elm$html$Html$td,
-					_List_Nil,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$class('p-2')
+						]),
 					_List_fromArray(
 						[
 							A2(
 							elm$html$Html$input,
 							_List_fromArray(
 								[
+									elm$html$Html$Attributes$class('filter drop-shadow-lg border border-gray-400 text-center rounded w-48 p-1'),
 									elm$html$Html$Attributes$name('playerName'),
 									elm$html$Html$Events$onInput(
 									author$project$Main$UpdatePlayerName(
@@ -5538,7 +5560,10 @@ var author$project$Main$playerView = F2(
 						])),
 					A2(
 					elm$html$Html$td,
-					_List_Nil,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$class('p-2')
+						]),
 					_List_fromArray(
 						[
 							elm$html$Html$text('point: ' + points)
@@ -5548,7 +5573,10 @@ var author$project$Main$playerView = F2(
 var author$project$Main$playerListView = function (model) {
 	return A2(
 		elm$html$Html$table,
-		_List_Nil,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('mx-auto')
+			]),
 		A2(
 			elm$core$List$map,
 			author$project$Main$playerView(model.games),
@@ -5556,8 +5584,6 @@ var author$project$Main$playerListView = function (model) {
 };
 var elm$html$Html$button = _VirtualDom_node('button');
 var elm$html$Html$div = _VirtualDom_node('div');
-var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
 var elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
@@ -5577,57 +5603,67 @@ var elm$html$Html$Events$onClick = function (msg) {
 var author$project$Main$view = function (model) {
 	return A2(
 		elm$html$Html$div,
-		_List_Nil,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('container mx-auto max-w-screen-xl')
+			]),
 		_List_fromArray(
 			[
 				A2(
-				elm$html$Html$table,
-				_List_Nil,
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('flex bg-blue-100 flex-col p-8')
+					]),
 				_List_fromArray(
 					[
 						A2(
-						elm$html$Html$tr,
-						_List_Nil,
+						elm$html$Html$div,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$class('flex-grow flex bg-blue-100')
+							]),
 						_List_fromArray(
 							[
 								A2(
-								elm$html$Html$td,
+								elm$html$Html$div,
 								_List_fromArray(
 									[
-										A2(elm$html$Html$Attributes$style, 'width', '20em')
+										elm$html$Html$Attributes$class('flex-auto flex-grow')
 									]),
 								_List_fromArray(
 									[
 										author$project$Main$playerListView(model)
 									])),
 								A2(
-								elm$html$Html$td,
-								_List_Nil,
+								elm$html$Html$div,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$class('flex-auto flex-grow')
+									]),
 								_List_fromArray(
 									[
 										author$project$Main$gamesView(model)
 									]))
 							])),
 						A2(
-						elm$html$Html$tr,
-						_List_Nil,
+						elm$html$Html$div,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$class('mx-auto mt-8')
+							]),
 						_List_fromArray(
 							[
 								A2(
-								elm$html$Html$td,
-								_List_Nil,
+								elm$html$Html$button,
 								_List_fromArray(
 									[
-										A2(
-										elm$html$Html$button,
-										_List_fromArray(
-											[
-												elm$html$Html$Events$onClick(author$project$Main$Reset)
-											]),
-										_List_fromArray(
-											[
-												elm$html$Html$text('Nulstil')
-											]))
+										elm$html$Html$Attributes$class('filter drop-shadow-lg border hover:bg-gray-300 bg-gray-100 py-2 px-4 rounded border border-black font-bold'),
+										elm$html$Html$Events$onClick(author$project$Main$Reset)
+									]),
+								_List_fromArray(
+									[
+										elm$html$Html$text('Nulstil')
 									]))
 							]))
 					]))
