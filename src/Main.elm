@@ -4,7 +4,7 @@ import Array
 import Browser
 import Game exposing (..)
 import Html exposing (Html, button, div, input, table, td, text, tr)
-import Html.Attributes exposing (name, style, value)
+import Html.Attributes exposing (class, name, style, value)
 import Html.Events exposing (onClick, onInput)
 import Json.Decode as Decode
 import Json.Encode as Encode
@@ -81,18 +81,18 @@ playerView games player =
                 |> String.fromInt
     in
     tr []
-        [ td []
+        [ td [ class "p-2" ]
             [ text ("Spiller " ++ (playerIdToInt player.playerId |> String.fromInt)) ]
-        , td []
-            [ input [ name "playerName", onInput (UpdatePlayerName (playerIdToInt player.playerId)), value player.name ] []
+        , td [ class "p-2" ]
+            [ input [ class "filter drop-shadow-lg border border-gray-400 text-center rounded w-48 p-1", name "playerName", onInput (UpdatePlayerName (playerIdToInt player.playerId)), value player.name ] []
             ]
-        , td [] [ text ("point: " ++ points) ]
+        , td [ class "p-2" ] [ text ("point: " ++ points) ]
         ]
 
 
 playerListView : Model -> Html Msg
 playerListView model =
-    table [] (List.map (playerView model.games) model.players)
+    table [ class "mx-auto" ] (List.map (playerView model.games) model.players)
 
 
 showPair players ( player1id, player2id ) =
@@ -115,34 +115,32 @@ editGameView players game =
             List.filter (\player -> player.playerId == playerId) players |> List.head
     in
     tr []
-        [ td [] [ text (showPair players game.double1) ]
-        , td [] [ input [ onInput (UpdateScore1 game.gameId), value game.score1 ] [] ]
-        , td [] [ text (showPair players game.double2) ]
-        , td [] [ input [ onInput (UpdateScore2 game.gameId), value game.score2 ] [] ]
+        [ td [ class "p-2" ] [ text (showPair players game.double1) ]
+        , td [ class "p-2" ] [ input [ class "filter drop-shadow-lg border border-gray-400 text-center rounded w-12 p-1", onInput (UpdateScore1 game.gameId), value game.score1 ] [] ]
+        , td [ class "p-2" ] [ text (showPair players game.double2) ]
+        , td [] [ input [ class "filter drop-shadow-lg border border-gray-400 rounded text-center w-12 p-1", onInput (UpdateScore2 game.gameId), value game.score2 ] [] ]
         ]
 
 
 gamesView : Model -> Html Msg
 gamesView model =
-    table [] (List.map (editGameView model.players) model.games)
+    table [ class "mx-auto" ] (List.map (editGameView model.players) model.games)
 
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ table []
-            [ tr []
-                [ td [ style "width" "20em" ]
+    div [ class "container mx-auto max-w-screen-xl" ]
+        [ div [ class "flex bg-blue-100 flex-col p-8" ]
+            [ div [ class "flex-grow flex bg-blue-100" ]
+                [ div [ class "flex-auto flex-grow" ]
                     [ playerListView model
                     ]
-                , td []
+                , div [ class "flex-auto flex-grow" ]
                     [ gamesView model
                     ]
                 ]
-            , tr []
-                [ td []
-                    [ button [ onClick Reset ] [ text "Nulstil" ]
-                    ]
+            , div [ class "mx-auto mt-8" ]
+                [ button [ class "filter drop-shadow-lg border hover:bg-gray-300 bg-gray-100 py-2 px-4 rounded border border-black font-bold", onClick Reset ] [ text "Nulstil" ]
                 ]
             ]
         ]
