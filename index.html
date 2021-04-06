@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tennisturnering</title>
+  <script type="text/javascript" src="elm.js"></script>
+</head>
+
+<body>
+  <div id="myapp"></div>
+</body>
+
+<script type="text/javascript">
+
+  var state = window.sessionStorage.getItem("tennis");
+
+  if(state === null) {
+    state = ""
+  }
+    
+  // Start the Elm application.
+  var app = Elm.Main.init({
+    node: document.getElementById('myapp'),
+    flags: state
+  });
+
+  app.ports.sendMessage.subscribe(function(message) {
+    window.sessionStorage.setItem("tennis", message);
+  });
+</script>
+
+</html>
